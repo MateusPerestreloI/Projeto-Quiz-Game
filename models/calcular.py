@@ -43,14 +43,47 @@ class Calcular:
 
     @property
     def _gerar_valor(self: object) -> int:
-        pass
+        if self.dificuldade == 1:
+            return rd(0,10)
+        elif self.dificuldade == 2:
+            return rd(0,100)
+        elif self.dificuldade == 3:
+            return rd(0,1000)
+        elif self.dificuldade == 4:
+            return rd(0,10000)
+        else:
+            return rd(0,100000)
 
     @property
     def _gerar_resultado(self: object) -> int:
-        pass
+        if self.operacao == 1: # Somar
+            return self.valor1 + self.valor2
+        elif self.operacao == 2: # Subtrair
+            return self.valor1 - self.valor2
+        else: # Multiplicar
+            return self.valor1 * self.valor2
+
+    @property
+    def _op_simbolo(self: object) -> str:
+        if self.operacao == 1:
+            return '+'
+        elif self.operacao == 2:
+            return '-'
+        else:
+            return '*'
 
     def checar_resultado(self: object, resposta: int) -> bool:
-        pass
+        certo: bool = False
+
+        if self.resultado == resposta:
+            print('Respota correta!')
+            certo = True
+        else:
+            print('Resposta errada!')
+
+        print(f'{self.valor1} {self._op_simbolo} {self.valor2} = {self.resultado}')
+        return certo
 
     def mostrar_operacao(self: object) -> None:
-        pass
+        print(f'{self.valor1} {self._op_simbolo} {self.valor2} = ?')
+
